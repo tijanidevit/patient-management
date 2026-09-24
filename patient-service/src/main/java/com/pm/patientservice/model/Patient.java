@@ -3,6 +3,7 @@ package com.pm.patientservice.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,9 +30,9 @@ public class Patient {
     @NotBlank
     private String address;
 
-    @NotBlank
+    @NotNull
     private LocalDate dateOfBirth;
 
-    @NotBlank
+    @NotNull
     private  LocalDate registeredDate;
 }
