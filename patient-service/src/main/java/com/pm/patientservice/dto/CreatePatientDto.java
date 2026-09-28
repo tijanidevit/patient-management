@@ -1,12 +1,12 @@
 package com.pm.patientservice.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -25,9 +25,11 @@ public class CreatePatientDto {
     @NotBlank
     private String address;
 
-    @NotBlank
-    private String dateOfBirth;
+    @NotNull
+    @Past(message = "Date of birth must be a date in the past.")
+    private LocalDate dateOfBirth;
 
-    @NotBlank
-    private String registeredDate;
+    @NotNull
+    @PastOrPresent(message = "Registered date cannot be in the future.")
+    private LocalDate registeredDate;
 }

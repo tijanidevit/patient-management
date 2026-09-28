@@ -22,8 +22,8 @@ public class PatientMapper {
                 .name(createPatientDto.getName())
                 .email(createPatientDto.getEmail())
                 .address(createPatientDto.getAddress())
-                .dateOfBirth(LocalDate.parse(createPatientDto.getDateOfBirth()))
-                .registeredDate(LocalDate.parse(createPatientDto.getRegisteredDate()))
+                .dateOfBirth(createPatientDto.getDateOfBirth())
+                .registeredDate(createPatientDto.getRegisteredDate())
                 .build();
     }
 }

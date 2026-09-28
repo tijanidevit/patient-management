@@ -15,4 +15,16 @@ public class ApiResponseUtil {
                 .data(data)
                 .build();
     }
+
+    public static <T> ApiResponse<T> error(T data) {
+        return error("Operation failed", data);
+    }
+
+    public static <T> ApiResponse<T> error(String message, T errors) {
+        return ApiResponse.<T>builder()
+                .success(false)
+                .message(message)
+                .errors(errors)
+                .build();
+    }
 }
