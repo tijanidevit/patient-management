@@ -16,8 +16,12 @@ public class ApiResponseUtil {
                 .build();
     }
 
-    public static <T> ApiResponse<T> error(T data) {
-        return error("Operation failed", data);
+    public static <T> ApiResponse<T> error(T errors) {
+        return error("Operation failed", errors);
+    }
+
+    public static <T> ApiResponse<T> error(String message) {
+        return error(message, null);
     }
 
     public static <T> ApiResponse<T> error(String message, T errors) {
