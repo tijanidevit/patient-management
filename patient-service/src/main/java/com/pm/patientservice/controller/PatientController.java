@@ -1,8 +1,9 @@
 package com.pm.patientservice.controller;
 
 import com.pm.patientservice.dto.ApiResponse;
-import com.pm.patientservice.dto.CreatePatientDto;
+import com.pm.patientservice.dto.CreatePatientDTO;
 import com.pm.patientservice.dto.PatientResponseDTO;
+import com.pm.patientservice.dto.UpdatePatientDTO;
 import com.pm.patientservice.service.PatientService;
 import com.pm.patientservice.util.ApiResponseUtil;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/patients")
@@ -30,9 +32,18 @@ public class PatientController {
     }
 
     @PostMapping
-    public ResponseEntity<ApiResponse<PatientResponseDTO>> create(@Valid @RequestBody CreatePatientDto createPatientDto) {
+    public ResponseEntity<ApiResponse<PatientResponseDTO>> create(@Valid @RequestBody CreatePatientDTO createPatientDto) {
         PatientResponseDTO patient = patientService.create(createPatientDto);
 
         return ResponseEntity.status(201).body(ApiResponseUtil.success("Patient created successfully", patient));
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<ApiResponse<PatientResponseDTO>> update(
+            @PathVariable UUID id,
+            @Valid @RequestBody UpdatePatientDTO updatePatientDto) {
+        PatientResponseDTO patient = patientService.update(id, updatePatientDto);
+
+        return ResponseEntity.status(201).body(ApiResponseUtil.success("Patient data updated successfully", patient));
     }
 }

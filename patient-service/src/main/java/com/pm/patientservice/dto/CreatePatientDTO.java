@@ -12,17 +12,17 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreatePatientDto {
-    @NotBlank
+public class CreatePatientDTO implements PatientDto {
+    @NotBlank(message = "Name is a required field")
     @Size(max = 100, message = "Name cannot exceed 100 characters.")
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "Email is a required field")
     @Email(message = "Please provide a valid email address.")
     @Size(max = 100, message = "Email cannot exceed 100 characters")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Address is a required field")
     private String address;
 
     @NotNull

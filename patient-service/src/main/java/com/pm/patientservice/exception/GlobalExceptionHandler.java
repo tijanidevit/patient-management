@@ -37,11 +37,15 @@ public class GlobalExceptionHandler {
                 ));
     }
 
-
-
     @ExceptionHandler(EmailAlreadyExistsException.class)
     public ResponseEntity<ApiResponse<Void>> handleEmailAlreadyExistsException(EmailAlreadyExistsException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(ApiResponseUtil.error(ex.getMessage()));
+    }
+
+    @ExceptionHandler(ModelNotFoundException.class)
+    public ResponseEntity<ApiResponse<Void>> handleModelNotFoundException(ModelNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(ApiResponseUtil.error(ex.getMessage()));
     }
 
