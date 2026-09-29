@@ -7,5 +7,4 @@ public interface PatientDto {
     String getEmail();
     String getAddress();
     LocalDate getDateOfBirth();
-    LocalDate getRegisteredDate();
 }

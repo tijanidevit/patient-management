@@ -17,13 +17,22 @@ public class PatientMapper {
                 .build();
     }
 
-    public static Patient toModel(PatientDto patientDto) {
+    public static Patient toModel(CreatePatientDTO patientDto) {
         return Patient.builder()
                 .name(patientDto.getName())
                 .email(patientDto.getEmail())
                 .address(patientDto.getAddress())
                 .dateOfBirth(patientDto.getDateOfBirth())
                 .registeredDate(patientDto.getRegisteredDate())
+                .build();
+    }
+
+    public static Patient toUpdateModel(PatientDto patientDto) {
+        return Patient.builder()
+                .name(patientDto.getName())
+                .email(patientDto.getEmail())
+                .address(patientDto.getAddress())
+                .dateOfBirth(patientDto.getDateOfBirth())
                 .build();
     }
 }

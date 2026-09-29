@@ -28,8 +28,4 @@ public class UpdatePatientDTO implements PatientDto {
     @NotNull
     @Past(message = "Date of birth must be a date in the past.")
     private LocalDate dateOfBirth;
-
-    @NotNull
-    @PastOrPresent(message = "Registered date cannot be in the future.")
-    private LocalDate registeredDate;
 }

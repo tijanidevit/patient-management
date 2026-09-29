@@ -44,6 +44,13 @@ public class PatientController {
             @Valid @RequestBody UpdatePatientDTO updatePatientDto) {
         PatientResponseDTO patient = patientService.update(id, updatePatientDto);
 
-        return ResponseEntity.status(201).body(ApiResponseUtil.success("Patient data updated successfully", patient));
+        return ResponseEntity.status(200).body(ApiResponseUtil.success("Patient data updated successfully", patient));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse<String>> delete(@PathVariable UUID id) {
+        patientService.delete(id);
+
+        return ResponseEntity.status(200).body(ApiResponseUtil.success("Patient data deleted successfully"));
     }
 }
